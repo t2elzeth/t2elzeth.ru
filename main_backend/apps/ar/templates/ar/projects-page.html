@@ -1,0 +1,18 @@
+{% extends 'ar/base.html' %}
+
+
+{% block title %}
+Все AR проекты
+{% endblock title %}
+
+
+{% block content %}
+
+	<div class="table">
+	    <i>Проекты</i>
+		{% for ar in ar_list %}
+			<div class="text-danger"><a href="{% url 'detail_ar' ar.id %}">{{ ar.title }}</a></div>
+		{% endfor %}
+	</div>
+
+{% endblock content %}

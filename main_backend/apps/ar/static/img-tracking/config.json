@@ -1,0 +1,29 @@
+{
+    "artoolkitUrl": "static/img-tracking/js/artoolkitNFT_wasm.js",
+    "addPath": "",
+    "cameraPara": "static/img-tracking/data/camera_para.dat",
+    "videoSettings": {
+        "width": {
+            "min": 640,
+            "max": 800
+        },
+        "height": {
+            "min": 480,
+            "max": 600
+        },
+        "facingMode": "environment"
+    },
+    "loading": {
+        "logo": {
+            "src": "/static/img-tracking/data/mt.png",
+            "alt": "arNFT.js logo"
+        },
+        "loadingMessage": "Loading..."
+    },
+    "renderer": {
+        "type": "three",
+        "alpha": true,
+        "antialias": true,
+        "precision": "mediump"
+    }
+}

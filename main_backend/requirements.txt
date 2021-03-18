@@ -1,0 +1,7 @@
+djangorestframework==3.12.2
+pillow==8.1.0
+pip-chill==1.0.0
+python-dotenv==0.15.0
+python-socketio==5.0.4
+requests==2.25.1
+Django~=3.1.7

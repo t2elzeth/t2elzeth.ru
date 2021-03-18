@@ -1,0 +1,19 @@
+{% extends 'ar/base.html' %}
+{% load static %}
+{% block title %} Добавить AR проект {% endblock title %}
+{% block content %}
+    <form method="post" class="form-group" enctype="multipart/form-data" action="">
+        {% csrf_token %}
+        <label for="id_title">Название</label>
+        <input class="input-form" type="text" id="id_title" name="title" placeholder="Название проекта">
+        <label for="id_img">Картинка (.png / .jpg)</label>
+        <div class="input-valid">
+            <input class="input-form file-input" type="file" name="image" id="id_img">
+        </div>
+        <label for="id_video">Видео (.mp4)</label>
+        <div class="input-valid">
+            <input class="input-form file-input" id="id_video" type="file" name="video">
+        </div>
+        <input type="submit" class="input-form btn-form" value="ЗАГРУЗИТЬ">
+    </form>
+{% endblock content %}

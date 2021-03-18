@@ -1,0 +1,50 @@
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>{{ title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1">
+    <link rel="stylesheet" href="{% static 'img-tracking/css/nft-style.css' %}">
+    <link rel="stylesheet" href="{% static 'img-tracking/css/main.css' %}">
+
+    <script src="{% static 'img-tracking/js/three.min.js' %}"></script>
+    <script src="{% static 'img-tracking/js/ARnft.js' %}"></script>
+</head>
+
+<body>
+    <div id="overlay">
+        <button id="startButton">Play</button>
+    </div>
+    <video id="arvideo" muted loop crossOrigin playsinline>
+		<source src="{% static 'img-tracking/data/custom/videos/'|add:video %}" type='video/mp4'>
+	</video>
+
+    <script>
+        var startButton = document.getElementById('startButton');
+        startButton.addEventListener('click', function() {
+            var overlay = document.getElementById('overlay');
+            overlay.remove();
+
+            console.log('Trynna play the video');
+            let camvideo = document.querySelector('#video')
+            if (camvideo !== null) {
+                camvideo.style.display = 'block';
+            }
+
+            let video = document.querySelector('#arvideo')
+            video.muted = false;
+            video.play();
+
+        }, false);
+
+        ARnft.ARnft.init(1280, 720, "static/img-tracking/data/custom/nft/{{ fset }}", "{% static 'img-tracking/config.json' %}", true)
+            .then((nft) => {
+                nft.addVideo('arvideo', 360);
+            }).catch((error) => {
+                console.log(error);
+            });
+    </script>
+</body>
+
+</html>
