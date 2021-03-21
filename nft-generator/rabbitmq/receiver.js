@@ -4,7 +4,7 @@ const camelcase = require("camelcase");
 const eventHandlers = require("./eventHandlers")
 
 
-amqp.connect('amqp://localhost', function (error0, connection) {
+amqp.connect('amqp://rabbitmq', function (error0, connection) {
   if (error0) throw error0
   connection.createChannel(function (error1, channel) {
     if (error1) throw error1

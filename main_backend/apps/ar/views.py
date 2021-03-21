@@ -32,7 +32,7 @@ class AddArView(CustomLoginRequiredMixin, FormView):
         return render(self.request, 'ar/invalidForm.html')
 
     def form_valid(self, form):
-        # form.save()
+        form.save()
         send_new_project()
         return render(self.request, 'ar/ok.html')
 

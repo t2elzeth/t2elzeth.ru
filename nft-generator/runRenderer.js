@@ -3,7 +3,7 @@ const cp = require("child_process");
 const axios = require("axios");
 const urljoin = require("url-join");
 
-const apiServer = "http://127.0.0.1:8001"
+const apiServer = "http://web:8000/"
 
 const urls = {
   all: urljoin(apiServer, "api/v1/ar/not_rendered/"),
@@ -18,7 +18,7 @@ const main = () => checkForNewProjects().then(startRender).catch(finishWorking)
 const startRender = data => startWorking(data).then(startChildProcess).then(updateProjectStatus).then(main).catch(console.log)
 
 // Fetches not rendered projects from API and if finds any, resolves, else rejects
-const checkForNewProjects = () => axios.get(urls.all).then(manageWork)
+const checkForNewProjects = () => axios.get(urls.all).then(manageWork).catch(console.log)
 
 const manageWork = ({data}) => newProjectsExist(data) ? Promise.resolve(data[0]) : Promise.reject()
 
@@ -38,7 +38,9 @@ function finishWorking() {
 
 function startChildProcess({id, imagename}) {
   return new Promise(resolve => {
-    const childProcess = cp.fork("./app.js", ["-i", getImagePath(imagename)], {silent: true})
+    const imagepath = getImagePath(imagename)
+    console.log(imagepath)
+    const childProcess = cp.fork("./app.js", ["-i", getImagePath(imagename)], )
     childProcess.on("exit", code => resolve({id, code, imagename}))
   })
 }
