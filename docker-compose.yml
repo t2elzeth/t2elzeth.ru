@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+  web:
+    build: ./main_backend
+    volumes:
+      - ./main_backend:/app
+  nft_generator:
+    build: ./nft-generator
+    volumes:
+      - ./nft-generator:/app
+    depends_on:
+      - web
+  nginx:
+    build: ./nginx
+    ports:
+      - "443:443"
+    volumes:
+      - ./main_backend/staticfiles:/app/static
+    depends_on:
+      - web

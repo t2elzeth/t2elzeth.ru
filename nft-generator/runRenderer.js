@@ -15,7 +15,7 @@ let working = false;
 
 const main = () => checkForNewProjects().then(startRender).catch(finishWorking)
 
-const startRender = data => startWorking(data).then(startChildProcess).then(updateProjectStatus).then(main)
+const startRender = data => startWorking(data).then(startChildProcess).then(updateProjectStatus).then(main).catch(console.log)
 
 // Fetches not rendered projects from API and if finds any, resolves, else rejects
 const checkForNewProjects = () => axios.get(urls.all).then(manageWork)
@@ -39,13 +39,14 @@ function finishWorking() {
 function startChildProcess({id, imagename}) {
   return new Promise(resolve => {
     const childProcess = cp.fork("./app.js", ["-i", getImagePath(imagename)], {silent: true})
-    childProcess.on("exit", code => resolve({id, code}))
+    childProcess.on("exit", code => resolve({id, code, imagename}))
   })
 }
 
-const updateProjectStatus = ({id, code}) => {
+const updateProjectStatus = async ({id, code, imagename}) => {
+  console.log(code)
   console.log("Finished rendering project #id:", id)
-  return axios.put(urls.update(id), {code}).then(() => Promise.resolve())
+  await axios.put(urls.update(id), {code})
 }
 
 const getImagePath = imagename => path.join("./main_backend_images/", imagename)

@@ -19,3 +19,9 @@ class ARIsRenderedSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.AR
         fields = ["id", "code"]
+
+
+class ARRenderedPhotoSerializer(serializers.Serializer):
+    fset = serializers.FileField()
+    fset3 = serializers.FileField()
+    iset = serializers.FileField()
