@@ -5,10 +5,10 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import FormView, DetailView, ListView, TemplateView
 
-from socketio_app.networking import emit_new_project
 from .forms import AddARForm
 from .mixins import CustomLoginRequiredMixin
 from .models import AR
+from .send import send_new_project
 
 
 class AllArView(CustomLoginRequiredMixin, ListView):
@@ -33,7 +33,7 @@ class AddArView(CustomLoginRequiredMixin, FormView):
 
     def form_valid(self, form):
         form.save()
-        emit_new_project()
+        send_new_project()
         return render(self.request, 'ar/ok.html')
 
     def get_form_kwargs(self):

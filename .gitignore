@@ -9,6 +9,7 @@ __pycache__/
 main_backend_images/
 output/
 **/data/videos/
+**/data/images/
 **/staticfiles/
 #C extensions
 *.so

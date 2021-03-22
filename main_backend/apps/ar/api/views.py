@@ -1,4 +1,5 @@
-from rest_framework import mixins, viewsets
+from rest_framework import mixins, viewsets, status
+from rest_framework.response import Response
 
 from . import serializers
 from .. import models
@@ -6,6 +7,7 @@ from .. import models
 
 class ARNotRenderedView(mixins.ListModelMixin,
                         mixins.UpdateModelMixin,
+                        mixins.CreateModelMixin,
                         viewsets.GenericViewSet):
     serializer_class = serializers.ARListSerializer
     queryset = models.AR.objects.filter(is_rendered=False)
@@ -15,6 +17,8 @@ class ARNotRenderedView(mixins.ListModelMixin,
             return serializers.ARListSerializer
         elif self.action == 'update':
             return serializers.ARIsRenderedSerializer
+        elif self.action == 'create':
+            return serializers.ARRenderedPhotoSerializer
 
     def perform_update(self, serializer):
         code = serializer.validated_data.get("code")
@@ -27,3 +31,10 @@ class ARNotRenderedView(mixins.ListModelMixin,
             instance.is_rendered = True
             return instance.save()
         print("An error occured!")
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        # self.perform_create(serializer)
+        print(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
