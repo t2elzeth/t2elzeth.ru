@@ -11,6 +11,7 @@ output/
 **/data/videos/
 **/data/images/
 **/staticfiles/
+media/
 #C extensions
 *.so
 

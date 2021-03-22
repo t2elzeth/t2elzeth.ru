@@ -8,11 +8,20 @@
 
 {% block content %}
 
-	<div class="table">
-	    <i>Проекты</i>
-		{% for ar in ar_list %}
-			<div class="text-danger"><a href="{% url 'detail_ar' ar.id %}">{{ ar.title }}</a></div>
-		{% endfor %}
-	</div>
+<div class="table">
+    <i>Проекты</i>
+    {% for ar in ar_list %}
+    <div class="text-danger">
+        <a href="{% url 'detail_ar' ar.id %}">
+            {{ ar.title }} -
+            {% if ar.is_rendered %}
+            Is ready
+            {% else %}
+            Not ready
+            {% endif %}
+        </a>
+    </div>
+    {% endfor %}
+</div>
 
 {% endblock content %}
