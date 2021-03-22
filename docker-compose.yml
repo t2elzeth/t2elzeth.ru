@@ -17,7 +17,6 @@ services:
     build: ./main_backend
     volumes:
       - ./main_backend:/app
-      - ./nft-generator/output:/app/static/img-tracking/data/nft
     networks:
       - rabbitmq_go_net
       - nginx

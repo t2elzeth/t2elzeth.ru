@@ -1,4 +1,4 @@
-FROM node:15.12.0-alpine3.10
+FROM node
 
 WORKDIR /app
 
@@ -6,5 +6,6 @@ COPY ./package*.json ./
 RUN npm install
 
 COPY . .
+RUN mkdir output/ && touch test.txt
 
 ENTRYPOINT ["npm", "start"]
