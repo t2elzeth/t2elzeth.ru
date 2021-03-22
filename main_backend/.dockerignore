@@ -1,7 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
 **/data/videos/
 .idea/
-./staticfiles
+staticfiles/
 
 ### Python template
 # Byte-compiled / optimized / DLL files
