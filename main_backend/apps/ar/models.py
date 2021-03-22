@@ -12,8 +12,8 @@ class AR(models.Model):
     """Model for each AR project with its own photo and video"""
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name="ars")
     title = models.CharField(max_length=255)
-    image = models.ImageField(upload_to="img-tracking/data/images/")
-    video = models.FileField(upload_to='img-tracking/data/videos/')
+    image = models.ImageField(upload_to="images/")
+    video = models.FileField(upload_to='videos/')
     is_rendered = models.BooleanField(default=False)
 
     def __str__(self):

@@ -27,7 +27,7 @@ services:
     build: ./nft-generator
     volumes:
       - ./nft-generator:/app
-      - ./main_backend/static/img-tracking/data/images:/app/main_backend_images
+      - ./main_backend/media/images:/app/main_backend_images
     networks:
       - rabbitmq_go_net
     depends_on:
@@ -40,6 +40,7 @@ services:
       - "443:443"
     volumes:
       - ./main_backend/staticfiles:/app/static
+      - ./main_backend/media:/app/media
     depends_on:
       - web
     networks:
