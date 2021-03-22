@@ -41,7 +41,7 @@
 
   }, false);
 
-  ARnft.ARnft.init(1280, 720, "static/img-tracking/data/nft/{{ ar.imagename }}", "{% static 'img-tracking/config.json' %}", true)
+  ARnft.ARnft.init(1280, 720, "staticfiles/img-tracking/data/nft/{{ ar.imagename }}", "{% static 'img-tracking/config.json' %}", true)
        .then((nft) => {
          nft.addVideo('arvideo', 360);
        }).catch((error) => {
