@@ -18,7 +18,7 @@
             "src": "/static/img-tracking/data/mt.png",
             "alt": "arNFT.js logo"
         },
-        "loadingMessage": "Please wait while we are loading required data..."
+        "loadingMessage": "Loading..."
     },
     "renderer": {
         "type": "three",
