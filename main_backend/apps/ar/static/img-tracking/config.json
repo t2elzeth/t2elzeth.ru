@@ -15,7 +15,7 @@
     },
     "loading": {
         "logo": {
-            "src": "/static/img-tracking/data/t2elzeth.png",
+            "src": "/static/img-tracking/t2elzeth.png",
             "alt": "AR by @t2elzeth"
         },
         "loadingMessage": "Loading..."
