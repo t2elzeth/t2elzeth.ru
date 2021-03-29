@@ -21,7 +21,7 @@ class AddARForm(forms.ModelForm):
     @staticmethod
     def valid_extension(filename, possible_extensions):
         _, file_ext = os.path.splitext(filename)
-        return file_ext in possible_extensions
+        return file_ext.lower() in possible_extensions
 
     def clean_image(self):
         image = self.cleaned_data['image']

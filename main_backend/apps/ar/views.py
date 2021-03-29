@@ -29,6 +29,7 @@ class AddArView(CustomLoginRequiredMixin, FormView):
     template_name = 'ar/add.html'
 
     def form_invalid(self, form):
+        print("this is formdata: ", self.request.POST, self.request.FILES)
         return render(self.request, 'ar/invalidForm.html')
 
     def form_valid(self, form):
