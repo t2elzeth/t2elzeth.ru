@@ -38,7 +38,7 @@ function finishWorking() {
 
 function startChildProcess({id, imagename}) {
   return new Promise(resolve => {
-    const childProcess = cp.fork("./app.js", ["-i", getImagePath(imagename)])
+    const childProcess = cp.fork("./app.js", ["-i", getImagePath(imagename)], {uid: 1000, gid: 1000})
     childProcess.on("exit", code => resolve({id, code}))
   })
 }
