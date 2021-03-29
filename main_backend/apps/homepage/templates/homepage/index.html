@@ -1,38 +1,16 @@
-<!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign In</title>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <meta name="google-signin-client_id" content="971399904673-dvnlo47t8ovbg7jsp7d9onvq8rcb2gv6.apps.googleusercontent.com">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@t2elzeth</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'homepage/style.css' %}">
 </head>
 <body>
-<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-<br/>
-<input type="button" onclick="signOut();" value="Sign out"/>
-
-<script>
-  function onSignIn(googleUser) {
-    console.log("Sign in successful! Yay!");
-    let id_token = googleUser.getAuthResponse().id_token;
-    let xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://localhost:8001/api/v1/auth/social/google/');
-    {#xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));#}
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onload = function () {
-      console.log('Signed in as: ' + xhr.responseText);
-    };
-    let send_params = 'provider=google-oauth2&code=' + id_token;
-    console.log("Sending: " + send_params);
-    xhr.send(send_params);
-  }
-
-  function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log('User signed out.');
-    });
-  }
-</script>
+<h3>Ули пушка негизи</h3>
 </body>
 </html>
