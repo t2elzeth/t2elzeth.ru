@@ -28,6 +28,7 @@ services:
     volumes:
       - ./nft-generator:/app
       - ./main_backend/media/images:/app/main_backend_images
+      - ./main_backend/staticfiles/img-tracking/data/nft:/app/output
     networks:
       - rabbitmq_go_net
     depends_on:
