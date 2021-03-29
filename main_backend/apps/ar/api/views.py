@@ -1,7 +1,8 @@
 from rest_framework import mixins, viewsets, status
 from rest_framework.response import Response
+from django.conf import settings
 
-from . import serializers
+from . import serializers, email
 from .. import models
 
 
@@ -29,7 +30,14 @@ class ARNotRenderedView(mixins.ListModelMixin,
             #                           "Your AR project is ready to use!")
 
             instance.is_rendered = True
-            return instance.save()
+            instance.save()
+
+            context = {
+                'id': instance.id,
+                'title': instance.title
+            }
+            email.ARIsRenderedNotificationEmail(self.request, context).send(settings.ADMIN_EMAILS)
+            return instance
         print("An error occured!")
 
     def create(self, request, *args, **kwargs):

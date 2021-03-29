@@ -96,3 +96,16 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# For Django Email Backend
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'lvltawit3@gmail.com'
+EMAIL_HOST_PASSWORD = 'yrlkzwarscaojpdn'
+EMAIL_USE_TLS = True
+
+ADMIN_EMAILS = [
+    os.getenv("ADMIN_EMAIL", 'ulukmanatageldiuulu@gmail.com')
+]
