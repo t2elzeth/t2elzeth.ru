@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <title>ARnft example showing a video</title>
+    <title>{{ ar }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1">
     <link rel="stylesheet" href="{% static 'img-tracking/css/nft-style.css' %}">
     <link rel="stylesheet" href="{% static 'img-tracking/css/main.css' %}">
@@ -21,29 +21,7 @@
     <source src="/media/videos/{{ ar.videoname }}" type='video/mp4'>
 </video>
 
-<script>
-  var startButton = document.getElementById('startButton');
-  document.title = "{{ ar }}"
-
-  startButton.addEventListener('click', function () {
-    document.querySelector('#overlay').remove();
-
-    console.log('Trynna play the video');
-    const camvideo = document.querySelector('#video')
-    if (camvideo !== null) camvideo.style.display = 'block'
-
-    const video = document.querySelector('#arvideo')
-    video.muted = false;
-    video.play();
-
-  }, false);
-
-  ARnft.ARnft.init(1280, 720,
-      "static/img-tracking/data/nft/{{ ar.imagename }}",
-      "{% static 'img-tracking/config.json' %}", true)
-       .then(nft => nft.addVideo('arvideo', 60))
-       .catch(console.log);
-</script>
+<script src="{% static 'img-tracking/js/main.js' %}"></script>
 </body>
 
 </html>
