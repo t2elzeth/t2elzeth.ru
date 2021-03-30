@@ -12,7 +12,6 @@ class AddARForm(forms.ModelForm):
         fields = ['title', 'image', 'video']
 
     ALLOWED_IMAGE_EXTENSIONS = [".jpg", ".jpeg", ".png"]
-    ALLOWED_VIDEO_EXTENSIONS = [".mp4"]
 
     def __init__(self, *args, **kwargs):
         self._user = kwargs.pop('user')
@@ -28,16 +27,7 @@ class AddARForm(forms.ModelForm):
         if not self.valid_extension(image.name, self.ALLOWED_IMAGE_EXTENSIONS):
             allowed_extensions_message = 'or'.join(self.ALLOWED_IMAGE_EXTENSIONS)
             raise ValidationError('Invalid image type. Should be ' + allowed_extensions_message)
-
         return image
-
-    def clean_video(self):
-        video = self.cleaned_data['video']
-        if not self.valid_extension(video.name, self.ALLOWED_VIDEO_EXTENSIONS):
-            allowed_extensions_message = 'or'.join(self.ALLOWED_VIDEO_EXTENSIONS)
-            raise ValidationError('Invalid video type. Should be ' + allowed_extensions_message)
-
-        return video
 
     def save(self, commit=True):
         instance = super().save(commit=False)
