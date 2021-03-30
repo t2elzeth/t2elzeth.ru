@@ -4,9 +4,9 @@ services:
   rabbitmq:
     image: rabbitmq:3-management-alpine
     container_name: 'rabbitmq'
-    ports:
-      - 5672:5672
-      - 15672:15672
+#    ports:
+#      - 5672:5672
+#      - 15672:15672
     volumes:
       - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
       - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
@@ -15,6 +15,7 @@ services:
 
   web:
     build: ./main_backend
+    container_name: web
     volumes:
       - ./main_backend:/app
     networks:
@@ -23,8 +24,9 @@ services:
     depends_on:
       - rabbitmq
 
-  nft_generator:
+  generator:
     build: ./nft-generator
+    container_name: generator
     volumes:
       - ./nft-generator:/app
       - ./main_backend/media/images:/app/main_backend_images
@@ -37,6 +39,7 @@ services:
 
   nginx:
     build: ./nginx/prod
+    container_name: nginx
     ports:
       - "443:443"
       - "80:80"
