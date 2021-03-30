@@ -11,7 +11,7 @@ services:
       - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
       - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
     networks:
-      - rabbitmq_go_net
+      - rabbitmq
 
   web:
     build: ./main_backend
@@ -19,7 +19,7 @@ services:
     volumes:
       - ./main_backend:/app
     networks:
-      - rabbitmq_go_net
+      - rabbitmq
       - nginx
     depends_on:
       - rabbitmq
@@ -32,7 +32,7 @@ services:
       - ./main_backend/media/images:/app/main_backend_images
       - ./main_backend/staticfiles/img-tracking/data/nft:/app/output
     networks:
-      - rabbitmq_go_net
+      - rabbitmq
     depends_on:
       - web
       - rabbitmq
@@ -52,7 +52,7 @@ services:
 
 
 networks:
-  rabbitmq_go_net:
+  rabbitmq:
     driver: bridge
   nginx:
     driver: bridge
