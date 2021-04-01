@@ -3,8 +3,6 @@ import os
 from django.contrib.auth import get_user_model
 from django.db import models
 
-from . import storage
-
 User = get_user_model()
 
 
@@ -14,6 +12,9 @@ class AR(models.Model):
     title = models.CharField(max_length=255)
     image = models.ImageField(upload_to="images/")
     video = models.FileField(upload_to='videos/')
+
+    scale = models.PositiveIntegerField(default=360)
+
     is_rendered = models.BooleanField(default=False)
 
     def __str__(self):

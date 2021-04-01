@@ -40,7 +40,7 @@
   ARnft.ARnft.init(1280, 720,
       "static/img-tracking/data/nft/{{ ar.imagename }}",
       "{% static 'img-tracking/config.json' %}", true)
-       .then(nft => nft.addVideo('arvideo', 60))
+       .then(nft => nft.addVideo('arvideo', {{ ar.scale }}))
        .catch(console.log);
 </script>
 </body>
