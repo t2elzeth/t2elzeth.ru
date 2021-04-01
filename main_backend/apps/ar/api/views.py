@@ -1,6 +1,5 @@
 from rest_framework import mixins, viewsets, status
 from rest_framework.response import Response
-from django.conf import settings
 
 from . import serializers, email
 from .. import models
@@ -36,7 +35,11 @@ class ARNotRenderedView(mixins.ListModelMixin,
                 'id': instance.id,
                 'title': instance.title
             }
-            email.ARIsRenderedNotificationEmail(self.request, context).send(settings.ADMIN_EMAILS)
+
+            admin_emails = [admin.email for admin in models.ARAdmin.objects.all()]
+            if not admin_emails:
+                admin_emails = ["ulukmanatageldiuulu@gmail.com"]
+            email.ARIsRenderedNotificationEmail(self.request, context).send(admin_emails)
             return instance
         print("An error occured!")
 

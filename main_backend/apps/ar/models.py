@@ -30,3 +30,10 @@ class AR(models.Model):
 
     class Meta:
         verbose_name_plural = 'AR проекты'
+
+
+class ARAdmin(models.Model):
+    email = models.EmailField()
+
+    def __str__(self):
+        return self.email

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import AR
+from .models import AR, ARAdmin as ARAdminModel
 
 
 class ARAdmin(admin.ModelAdmin):
@@ -8,3 +8,4 @@ class ARAdmin(admin.ModelAdmin):
 
 
 admin.site.register(AR, ARAdmin)
+admin.site.register(ARAdminModel)

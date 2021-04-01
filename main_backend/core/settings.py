@@ -106,7 +106,4 @@ EMAIL_HOST_USER = 'lvltawit3@gmail.com'
 EMAIL_HOST_PASSWORD = 'yrlkzwarscaojpdn'
 EMAIL_USE_TLS = True
 
-ADMIN_EMAILS = [
-    "ulukmanatageldiuulu@gmail.com"
-]
 SITE_NAME = os.getenv("SITE_NAME", "t2elzeth.ru")
