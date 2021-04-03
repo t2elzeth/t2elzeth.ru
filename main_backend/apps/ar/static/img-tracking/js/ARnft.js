@@ -472,9 +472,11 @@
                                                     var c = JSON.parse(e.nft),
                                                         l = new(x())("getNFTData", { detail: { dpi: c.dpi, width: c.width, height: c.height } });
                                                     document.dispatchEvent(l);
+                                                    alert("nftData 475")
                                                     break;
                                                 case "found":
                                                     R(e);
+                                                    alert("und 478")
                                                     break;
                                                 case "not found":
                                                     R(null)
