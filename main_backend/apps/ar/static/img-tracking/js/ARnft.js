@@ -396,7 +396,8 @@
                                                 s = t.sent, l(s), t.next = 26;
                                                 break;
                                             case 23:
-                                                t.prev = 23, t.t0 = t.catch(16), console.error(t.t0);
+                                                t.prev = 23, t.t0 = t.catch(16);
+                                                window.location.href = window.location.protocol + '//' + window.location.host + "/unsupported";
                                             case 26:
                                                 t.next = 29;
                                                 break;

@@ -41,7 +41,7 @@
       "static/img-tracking/data/nft/{{ ar.imagename }}",
       "{% static 'img-tracking/config.json' %}", true)
        .then(nft => nft.addVideo('arvideo', {{ ar.scale }}))
-       .catch(console.log);
+       .catch(() => console.log("Device seems to be cameraless"));
 </script>
 </body>
 
