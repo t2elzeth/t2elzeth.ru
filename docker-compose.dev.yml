@@ -25,10 +25,10 @@ services:
       - rabbitmq
 
   generator:
-    build: ./nft-generator
+    build: ./generator
     container_name: generator
     volumes:
-      - ./nft-generator:/app
+      - ./generator:/app
       - ./main_backend/media/images:/app/main_backend_images
       - ./main_backend/staticfiles/img-tracking/data/nft:/app/output
     networks:
