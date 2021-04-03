@@ -475,9 +475,6 @@
                                                     break;
                                                 case "found":
                                                     R(e);
-                                                    const video = document.querySelector('#arvideo');
-                                                    if (video.paused) video.play();
-
                                                     break;
                                                 case "not found":
                                                     R(null)
