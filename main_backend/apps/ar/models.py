@@ -12,6 +12,7 @@ class AR(models.Model):
     title = models.CharField(max_length=255)
     image = models.ImageField(upload_to="images/")
     video = models.FileField(upload_to='videos/')
+    slug = models.SlugField(unique=True)
 
     scale = models.PositiveIntegerField(default=360)
 

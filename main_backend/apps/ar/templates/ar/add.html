@@ -6,7 +6,9 @@
         {% csrf_token %}
         <label for="id_title">Название</label>
         <input class="input-form" type="text" id="id_title" name="title" placeholder="Название проекта">
-        <label for="id_img">Картинка (.png / .jpg)</label>
+        <label for="id_slug">URL name</label>
+        <input class="input-form" type="text" id="id_slug" name="slug" placeholder="Ссылка в браузере">
+        <label for="id_img">Картинка (.png / .jpg / .jpeg)</label>
         <div class="input-valid">
             <input class="input-form file-input" type="file" name="image" id="id_img">
         </div>

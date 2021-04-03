@@ -30,11 +30,11 @@ class AddArView(CustomLoginRequiredMixin, FormView):
 
     def form_invalid(self, form):
         print("this is formdata: ", self.request.POST, self.request.FILES)
-        return render(self.request, 'ar/invalidForm.html')
+        return render(self.request, 'ar/invalidForm.html', {'form': form})
 
     def form_valid(self, form):
         form.save()
-        send_new_project()
+        # send_new_project()
         return render(self.request, 'ar/ok.html')
 
     def get_form_kwargs(self):

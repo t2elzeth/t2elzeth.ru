@@ -9,7 +9,7 @@ from .models import AR
 class AddARForm(forms.ModelForm):
     class Meta:
         model = AR
-        fields = ['title', 'image', 'video']
+        fields = ['title', 'image', 'video', 'slug']
 
     ALLOWED_IMAGE_EXTENSIONS = [".jpg", ".jpeg", ".png"]
 
