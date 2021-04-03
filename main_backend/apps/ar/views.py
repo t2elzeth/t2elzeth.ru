@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.views.generic import FormView, DetailView, ListView, TemplateView
 
 from .forms import AddARForm
-from .mixins import CustomLoginRequiredMixin
+from .mixins import CustomLoginRequiredMixin, ARIsReadyMixin
 from .models import AR
 from .send import send_new_project
 
@@ -19,7 +19,7 @@ class AllArView(CustomLoginRequiredMixin, ListView):
         return self.model.objects.filter(owner=self.request.user)
 
 
-class ArDetailView(DetailView):
+class ArDetailView(ARIsReadyMixin, DetailView):
     template_name = 'ar/detail.html'
     model = AR
 
