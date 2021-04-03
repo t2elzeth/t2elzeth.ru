@@ -32,8 +32,9 @@ class ARNotRenderedView(mixins.ListModelMixin,
             instance.save()
 
             context = {
-                'id': instance.id,
-                'title': instance.title
+                'ar': instance,
+                'title': instance.title,
+                'id': instance.id
             }
 
             admin_emails = [admin.email for admin in models.ARAdmin.objects.all()]
