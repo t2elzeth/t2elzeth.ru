@@ -476,7 +476,9 @@
                                                     break;
                                                 case "found":
                                                     R(e);
-                                                    alert("und 478")
+                                                    const video = document.querySelector('#arvideo');
+                                                    if (video.paused) video.play();
+
                                                     break;
                                                 case "not found":
                                                     R(null)

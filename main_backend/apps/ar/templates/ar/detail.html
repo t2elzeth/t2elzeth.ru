@@ -23,6 +23,7 @@
 
 <script>
   const startButton = document.getElementById('startButton');
+  const video = document.querySelector('#arvideo')
 
   startButton.addEventListener('click', function () {
     document.querySelector('#overlay').remove();
@@ -31,7 +32,6 @@
     const camvideo = document.querySelector('#video')
     if (camvideo !== null) camvideo.style.display = 'block'
 
-    const video = document.querySelector('#arvideo')
     video.muted = false;
     video.play();
 
@@ -45,6 +45,7 @@
 
   document.addEventListener("nftTrackingLost", function () {
     alert("Tracking lost")
+    video.pause()
   })
 </script>
 </body>
