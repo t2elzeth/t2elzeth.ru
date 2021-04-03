@@ -433,7 +433,7 @@
                                         R = function(t) {
                                             if (t) {
                                                 T = JSON.parse(t.matrixGL_RH);
-                                                var e = new(x())("getMatrixGL_RH", { detail: { matrixGL_RH: T } });
+                                                var e = new(x())("nftTrackingFound", { detail: { matrixGL_RH: T } });
                                                 document.dispatchEvent(e)
                                             } else if (T) {
                                                 T = null;
@@ -557,7 +557,7 @@
                                     var t = this;
                                     this.camera.matrixAutoUpdate = !1, document.addEventListener("getProjectionMatrix", (function(e) { b.setMatrix(t.camera.projectionMatrix, e.detail.proj) })), this.scene.add(this.camera);
                                     var e = new T.AmbientLight(16777215);
-                                    this.scene.add(e), document.addEventListener("getMatrixGL_RH", (function(e) {
+                                    this.scene.add(e), document.addEventListener("nftTrackingFound", (function(e) {
                                         t.root.visible = !0;
                                         var n = b.interpolate(e.detail.matrixGL_RH);
                                         b.setMatrix(t.root.matrix, n)
