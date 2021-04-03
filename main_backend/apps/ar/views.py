@@ -34,7 +34,7 @@ class AddArView(CustomLoginRequiredMixin, FormView):
 
     def form_valid(self, form):
         form.save()
-        # send_new_project()
+        send_new_project()
         return render(self.request, 'ar/ok.html')
 
     def get_form_kwargs(self):
