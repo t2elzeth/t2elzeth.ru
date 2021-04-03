@@ -35,9 +35,9 @@
   }, false);
 
   ARnft.ARnft.init(1280, 720,
-      "static/img-tracking/data/nft/{{ ar.imagename }}",
+      "static/img-tracking/data/custom/nft/{{ fset }}",
       "{% static 'img-tracking/config.json' %}", true)
-       .then(nft => nft.addVideo('arvideo', {{ ar.scale }}))
+       .then(nft => nft.addVideo('arvideo', 360))
        .catch(() => console.log("Device seems to be cameraless"));
 
   document.addEventListener("nftTrackingLost", function () {
