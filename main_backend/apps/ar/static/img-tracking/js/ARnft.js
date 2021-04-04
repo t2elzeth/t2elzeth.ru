@@ -462,8 +462,6 @@
                                                     break;
                                                 case "endLoading":
                                                     if (!0 === e.end) {
-                                                        var s = document.getElementById("loading");
-                                                        s && (s.querySelector(".loading-text").innerText = "Start the tracking!", setTimeout((function() { s.parentElement.removeChild(s) }), 2e3))
                                                         document.querySelector('#overlay').style.display = 'flex';
                                                         document.querySelector('#loading').style.display = 'none';
                                                     }
