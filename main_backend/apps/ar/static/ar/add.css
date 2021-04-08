@@ -103,7 +103,7 @@ body {
     bottom: 50px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-device-width: 768px) {
     .background-img {
         width: 400px;
     }
