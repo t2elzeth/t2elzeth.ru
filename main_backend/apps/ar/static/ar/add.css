@@ -129,6 +129,10 @@ body {
         color: white;
     }
 
+    .form-input::placeholder {
+        color: white;
+    }
+
     .submit-btn {
         bottom: 125px;
     }
