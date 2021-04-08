@@ -1,21 +1,31 @@
-{% extends 'ar/base.html' %}
+<!doctype html>
 {% load static %}
-{% block title %} Добавить AR проект {% endblock title %}
-{% block content %}
-    <form method="post" class="form-group" enctype="multipart/form-data" action="">
-        {% csrf_token %}
-        <label for="id_title">Название</label>
-        <input class="input-form" type="text" id="id_title" name="title" placeholder="Название проекта">
-        <label for="id_slug">URL name</label>
-        <input class="input-form" type="text" id="id_slug" name="slug" placeholder="Ссылка в браузере">
-        <label for="id_img">Картинка (.png / .jpg / .jpeg)</label>
-        <div class="input-valid">
-            <input class="input-form file-input" type="file" name="image" id="id_img">
-        </div>
-        <label for="id_video">Видео</label>
-        <div class="input-valid">
-            <input class="input-form file-input" id="id_video" type="file" name="video">
-        </div>
-        <input type="submit" class="input-form btn-form" value="ЗАГРУЗИТЬ">
-    </form>
-{% endblock content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add new AR</title>
+    <link rel="stylesheet" href="{% static 'ar/add.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<img src="{% static 'ar/add-ar-page-background.png' %}" alt="" class="background-img">
+<div class="container">
+    <div class="form-container">
+        <form method="post" class="form" enctype="multipart/form-data">
+            <h1 class="form-header">Новый проект</h1>
+            {% csrf_token %}
+            <input type="text" class="form-input" placeholder="Название проекта" name="title">
+            <input type="text" class="form-input" placeholder="URL name" name="slug">
+            <input type="file" class="form-input" placeholder="Картинка (.png / .jpg / .jpeg)" name="image">
+            <input type="file" class="form-input" placeholder="Видео" name="video">
+            <button class="submit-btn">Создать</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
