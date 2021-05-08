@@ -3,10 +3,10 @@ version: "3.7"
 services:
   rabbitmq:
     image: rabbitmq:3-management-alpine
-    container_name: 'rabbitmq'
-#    ports:
-#      - 5672:5672
-#      - 15672:15672
+    container_name: ${PROJECT_NAME}Rabbitmq
+    #    ports:
+    #      - 5672:5672
+    #      - 15672:15672
     volumes:
       - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
       - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
@@ -15,9 +15,11 @@ services:
 
   web:
     build: ./main_backend
-    container_name: web
+    container_name: ${PROJECT_NAME}Web
     volumes:
-      - ./main_backend:/app
+      - staticfiles:/app/staticfiles
+      - mediafiles:/app/media
+      - rendered_nft:/app/staticfiles/img-tracking/data/nft
     networks:
       - rabbitmq
       - nginx
@@ -26,11 +28,10 @@ services:
 
   generator:
     build: ./generator
-    container_name: generator
+    container_name: ${PROJECT_NAME}Generator
     volumes:
-      - ./generator:/app
-      - ./main_backend/media/images:/app/main_backend_images
-      - ./main_backend/staticfiles/img-tracking/data/nft:/app/output
+      - images_to_render:/app/main_backend_images
+      - rendered_nft:/app/output
     networks:
       - rabbitmq
     depends_on:
@@ -43,8 +44,8 @@ services:
     ports:
       - "443:443"
     volumes:
-      - ./main_backend/staticfiles:/app/static
-      - ./main_backend/media:/app/media
+      - staticfiles:/app/static
+      - mediafiles:/app/media
     depends_on:
       - web
     networks:
@@ -54,5 +55,20 @@ services:
 networks:
   rabbitmq:
     driver: bridge
+    name: ${PROJECT_NAME}RabbitmqNetwork
   nginx:
     driver: bridge
+    name: ${PROJECT_NAME}NginxNetwork
+
+volumes:
+  staticfiles:
+    name: ${PROJECT_NAME}Staticfiles
+
+  mediafiles:
+    name: ${PROJECT_NAME}Mediafiles
+
+  images_to_render:
+    name: ${PROJECT_NAME}ImagesToRender
+
+  rendered_nft:
+    name: ${PROJECT_NAME}RenderedNFTMarkers
