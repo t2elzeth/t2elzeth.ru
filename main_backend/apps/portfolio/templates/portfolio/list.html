@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portfolio</title>
+</head>
+<body>
+{% for item in portfolio_items %}
+    <a href="{{ item.url }}">{{ item.title }}</a>
+{% endfor %}
+</body>
+</html>
