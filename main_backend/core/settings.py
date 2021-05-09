@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     # own
     'homepage',
     'ar',
+    'portfolio'
 ]
 
 MIDDLEWARE = [
@@ -107,3 +108,5 @@ EMAIL_HOST_PASSWORD = 'yrlkzwarscaojpdn'
 EMAIL_USE_TLS = True
 
 SITE_NAME = os.getenv("SITE_NAME", "t2elzeth.ru")
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
