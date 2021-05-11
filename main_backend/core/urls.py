@@ -7,7 +7,8 @@ urlpatterns = [
 
     path('', include('homepage.urls')),
     path('ar/', include('ar.urls')),
-    path('api/v1/ar/', include("ar.api.urls"))
+    path('api/v1/ar/', include("ar.api.urls")),
+    path('portfolio/', include("portfolio.urls")),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
