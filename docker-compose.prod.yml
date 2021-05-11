@@ -50,6 +50,7 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt
       - staticfiles:/app/static
       - mediafiles:/app/media
+      - rendered_nft:/app/static/img-tracking/data/nft
     depends_on:
       - web
     networks:
