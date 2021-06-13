@@ -26,6 +26,8 @@ class Command(BaseCommand):
         user_filter = {User.USERNAME_FIELD: username}
         if not User.objects.filter(**user_filter).exists():
             print(f"{username} user has been created!")
-            User.objects.create_superuser(username, "admin@gmail.com", password)
+            User.objects.create_superuser(
+                username, "admin@gmail.com", password
+            )
         else:
             print(f"{username} user already exists!")

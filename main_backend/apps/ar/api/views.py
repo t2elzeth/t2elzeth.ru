@@ -33,9 +33,15 @@ class ARNotRenderedView(
             instance.is_rendered = True
             instance.save()
 
-            context = {"ar": instance, "title": instance.title, "id": instance.id}
+            context = {
+                "ar": instance,
+                "title": instance.title,
+                "id": instance.id,
+            }
 
-            admin_emails = [admin.email for admin in models.ARAdmin.objects.all()]
+            admin_emails = [
+                admin.email for admin in models.ARAdmin.objects.all()
+            ]
             if not admin_emails:
                 admin_emails = ["ulukmanatageldiuulu@gmail.com"]
             email.ARIsRenderedNotificationEmail(self.request, context).send(

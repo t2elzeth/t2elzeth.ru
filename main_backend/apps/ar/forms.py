@@ -25,7 +25,9 @@ class AddARForm(forms.ModelForm):
     def clean_image(self):
         image = self.cleaned_data["image"]
         if not self.valid_extension(image.name, self.ALLOWED_IMAGE_EXTENSIONS):
-            allowed_extensions_message = "or".join(self.ALLOWED_IMAGE_EXTENSIONS)
+            allowed_extensions_message = "or".join(
+                self.ALLOWED_IMAGE_EXTENSIONS
+            )
             raise ValidationError(
                 "Invalid image type. Should be " + allowed_extensions_message
             )
