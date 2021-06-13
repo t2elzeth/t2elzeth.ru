@@ -1,23 +1,25 @@
-from rest_framework import mixins, viewsets, status
+from rest_framework import mixins, status, viewsets
 from rest_framework.response import Response
 
-from . import serializers, email
 from .. import models
+from . import email, serializers
 
 
-class ARNotRenderedView(mixins.ListModelMixin,
-                        mixins.UpdateModelMixin,
-                        mixins.CreateModelMixin,
-                        viewsets.GenericViewSet):
+class ARNotRenderedView(
+    mixins.ListModelMixin,
+    mixins.UpdateModelMixin,
+    mixins.CreateModelMixin,
+    viewsets.GenericViewSet,
+):
     serializer_class = serializers.ARListSerializer
     queryset = models.AR.objects.filter(is_rendered=False)
 
     def get_serializer_class(self):
-        if self.action == 'list':
+        if self.action == "list":
             return serializers.ARListSerializer
-        elif self.action == 'update':
+        elif self.action == "update":
             return serializers.ARIsRenderedSerializer
-        elif self.action == 'create':
+        elif self.action == "create":
             return serializers.ARRenderedPhotoSerializer
 
     def perform_update(self, serializer):
@@ -31,16 +33,14 @@ class ARNotRenderedView(mixins.ListModelMixin,
             instance.is_rendered = True
             instance.save()
 
-            context = {
-                'ar': instance,
-                'title': instance.title,
-                'id': instance.id
-            }
+            context = {"ar": instance, "title": instance.title, "id": instance.id}
 
             admin_emails = [admin.email for admin in models.ARAdmin.objects.all()]
             if not admin_emails:
                 admin_emails = ["ulukmanatageldiuulu@gmail.com"]
-            email.ARIsRenderedNotificationEmail(self.request, context).send(admin_emails)
+            email.ARIsRenderedNotificationEmail(self.request, context).send(
+                admin_emails
+            )
             return instance
         print("An error occured!")
 

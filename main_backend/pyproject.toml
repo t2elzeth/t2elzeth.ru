@@ -1,0 +1,32 @@
+[tool.black]
+exclude = "env/"
+
+[tool.isort]
+profile="black"
+src_paths="src"
+skip_gitignore="true"
+
+[tool.poetry]
+name = "main_backend"
+version = "0.1.0"
+description = ""
+authors = ["Ulukman Amangeldiev <ulukmanatageldiuulu@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = "^3.2.4"
+djangorestframework = "^3.12.4"
+django-templated-mail = "^1.1.1"
+pika = "^1.2.0"
+Pillow = "^8.2.0"
+python-dotenv = "^0.17.1"
+
+[tool.poetry.dev-dependencies]
+isort = "^5.8.0"
+black = "^21.6b0"
+flake8 = "^3.9.2"
+autopep8 = "^1.5.7"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

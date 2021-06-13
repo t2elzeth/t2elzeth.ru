@@ -1,6 +1,6 @@
-from django import forms
 import os
 
+from django import forms
 from django.core.exceptions import ValidationError
 
 from .models import AR
@@ -9,12 +9,12 @@ from .models import AR
 class AddARForm(forms.ModelForm):
     class Meta:
         model = AR
-        fields = ['title', 'image', 'video', 'slug']
+        fields = ["title", "image", "video", "slug"]
 
     ALLOWED_IMAGE_EXTENSIONS = [".jpg", ".jpeg", ".png"]
 
     def __init__(self, *args, **kwargs):
-        self._user = kwargs.pop('user')
+        self._user = kwargs.pop("user")
         super().__init__(*args, **kwargs)
 
     @staticmethod
@@ -23,10 +23,12 @@ class AddARForm(forms.ModelForm):
         return file_ext.lower() in possible_extensions
 
     def clean_image(self):
-        image = self.cleaned_data['image']
+        image = self.cleaned_data["image"]
         if not self.valid_extension(image.name, self.ALLOWED_IMAGE_EXTENSIONS):
-            allowed_extensions_message = 'or'.join(self.ALLOWED_IMAGE_EXTENSIONS)
-            raise ValidationError('Invalid image type. Should be ' + allowed_extensions_message)
+            allowed_extensions_message = "or".join(self.ALLOWED_IMAGE_EXTENSIONS)
+            raise ValidationError(
+                "Invalid image type. Should be " + allowed_extensions_message
+            )
         return image
 
     def save(self, commit=True):

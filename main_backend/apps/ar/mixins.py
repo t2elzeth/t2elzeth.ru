@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 
 class CustomLoginRequiredMixin(LoginRequiredMixin):
-    login_url = '/admin/login/'
+    login_url = "/admin/login/"
 
 
 class ARIsReadyMixin:
@@ -12,5 +12,5 @@ class ARIsReadyMixin:
 
     def dispatch(self, request, *args, **kwargs):
         if not self.has_permissions():
-            return HttpResponse('This AR is not ready yet!')
+            return HttpResponse("This AR is not ready yet!")
         return super().dispatch(request, *args, **kwargs)

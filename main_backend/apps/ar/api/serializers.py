@@ -8,13 +8,11 @@ class ARListSerializer(serializers.ModelSerializer):
 
     def _imagename(self, obj):
         imagepath = obj.image.name
-        return imagepath.split('/')[-1]
+        return imagepath.split("/")[-1]
 
     class Meta:
         model = models.AR
-        fields = [
-            "id", "imagename"
-        ]
+        fields = ["id", "imagename"]
 
 
 class ARIsRenderedSerializer(serializers.ModelSerializer):
